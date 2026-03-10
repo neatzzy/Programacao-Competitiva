@@ -41,7 +41,6 @@ int main(){
     floydWarshall(g);
     for(int i = 0 ; i < q ; i++){
         int start, end; cin >> start >> end;
-
         cout << ((g[start][end] == LLONG_MAX)? -1 : g[start][end]) << "\n";
     }
     return 0;

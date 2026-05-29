@@ -10,22 +10,27 @@ using namespace std;
 #define ff(m,n) for(int i = 0 ; i < m ; i++)for(int j = 0 ; j < n ; j++)
 typedef vector<vector<int>> graph;
 
-vi primes = {2, 3, 5, 7};
+int countBad(int n){
+    int ans = 0;
+    vi badFactors = {2, 3, 5, 7};
+    for(int i = 1 ; i < (1 << 4) ; i++){
+        int mul = 1, bits = 0;
+        for(int j = 0 ; j < 4 ; j++){
+            if(i & (1 << j)){
+                mul *= badFactors[j];
+                bits++;
+            }
+        }
+        if(bits & 1) ans += n / mul;
+        else ans -= n / mul;
+    }
+    return ans;
+}
+
 
 void solve(){
     int l, r; cin >> l >> r;
-    int ans = 0;
-    for(int i = l ; i <= r ; i++){
-        bool check = true;
-        for(auto& p : primes){
-            if(i % p == 0){
-                check = false;
-                break;
-            }
-        }
-        if(check) ans++;
-    }
-    cout << ans << '\n';
+    cout << (r - l + 1) - (countBad(r) - countBad(l - 1)) << "\n";
 }
 
 signed main(){

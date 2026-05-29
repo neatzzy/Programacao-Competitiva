@@ -28,7 +28,7 @@ void sieve(int limit){
     }
 }
 
-void getOccurece(const vi& v){
+void getOcurrence(const vi& v){
     int mx = *max_element(v.begin(), v.end());
 
     if(mx < 2) return;
@@ -50,7 +50,7 @@ signed main(){
     cin >> n;
     vi v(n);
     for(auto& a : v) cin >> a;
-    getOccurece(v);
+    getOcurrence(v);
 
     vi points;
 

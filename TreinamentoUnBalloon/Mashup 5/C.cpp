@@ -28,7 +28,7 @@ void dfs(vector<vector<char>>& graph, ii v, vector<vector<bool>>& visited){
         int ni = a + dir_i[i];
         int nj = b + dir_j[i];
         if(isValid(ni, nj, graph) && !visited[ni][nj]){
-            dfs(graph, mp(a, b), visited);
+            dfs(graph, mp(ni, nj), visited);
         }
     }
 }
@@ -38,7 +38,7 @@ signed main(){
     cin.tie(nullptr);
 
     int n, m; cin >> n >> m;
-    vector<vector<char> > mtx(n);
+    vector<vector<char>> mtx(n, vector<char>(m));
     int count = 0;
 
     for(int i = 0 ; i < n ; i++)
@@ -46,7 +46,7 @@ signed main(){
 
     vector<vector<bool>> visited(n, vector<bool>(m, false));
 
-    for(int i = 0 ; i < n ;i++){
+    for(int i = 0 ; i < n ; i++){
         for(int j = 0 ; j < m ; j++){
             if(mtx[i][j] == '.' and !visited[i][j]){
                 count++;

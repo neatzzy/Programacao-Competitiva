@@ -1,0 +1,6 @@
+s = input()
+s = s.removeprefix("WUB")
+s = s.removesuffix("WUB")
+s = s.replace("WUBWUB", "WUB")
+s = s.replace("WUB", " ")
+print(s)
